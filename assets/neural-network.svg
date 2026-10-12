@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <radialGradient id="nodeGlow">
+      <stop offset="0%" stop-color="#36BCF7"/>
+      <stop offset="100%" stop-color="#8A2BE2"/>
+    </radialGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#36BCF7" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FF0080" stop-opacity="0.8"/>
+    </linearGradient>
+    <filter id="nodeFilter">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="600" height="400" fill="#0D1117"/>
+
+  <!-- Title -->
+  <text x="300" y="35" text-anchor="middle" font-family="Fira Code, monospace" font-size="18" fill="#36BCF7" font-weight="bold">
+    🧠 Neural Network Architecture
+  </text>
+
+  <!-- Connections between layers -->
+  <g stroke="url(#lineGrad)" stroke-width="1.5" fill="none" opacity="0.4">
+    <!-- Input to Hidden1 -->
+    <line x1="100" y1="120" x2="250" y2="100"/>
+    <line x1="100" y1="120" x2="250" y2="170"/>
+    <line x1="100" y1="120" x2="250" y2="240"/>
+    <line x1="100" y1="120" x2="250" y2="310"/>
+    <line x1="100" y1="200" x2="250" y2="100"/>
+    <line x1="100" y1="200" x2="250" y2="170"/>
+    <line x1="100" y1="200" x2="250" y2="240"/>
+    <line x1="100" y1="200" x2="250" y2="310"/>
+    <line x1="100" y1="280" x2="250" y2="100"/>
+    <line x1="100" y1="280" x2="250" y2="170"/>
+    <line x1="100" y1="280" x2="250" y2="240"/>
+    <line x1="100" y1="280" x2="250" y2="310"/>
+
+    <!-- Hidden1 to Hidden2 -->
+    <line x1="250" y1="100" x2="400" y2="140"/>
+    <line x1="250" y1="100" x2="400" y2="260"/>
+    <line x1="250" y1="170" x2="400" y2="140"/>
+    <line x1="250" y1="170" x2="400" y2="260"/>
+    <line x1="250" y1="240" x2="400" y2="140"/>
+    <line x1="250" y1="240" x2="400" y2="260"/>
+    <line x1="250" y1="310" x2="400" y2="140"/>
+    <line x1="250" y1="310" x2="400" y2="260"/>
+
+    <!-- Hidden2 to Output -->
+    <line x1="400" y1="140" x2="530" y2="200"/>
+    <line x1="400" y1="260" x2="530" y2="200"/>
+  </g>
+
+  <!-- Traveling Signal Dots -->
+  <circle r="3" fill="#FF0080">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M100,120 L250,100 L400,140 L530,200"/>
+  </circle>
+  <circle r="3" fill="#36BCF7">
+    <animateMotion dur="2.5s" repeatCount="indefinite" path="M100,200 L250,170 L400,260 L530,200"/>
+  </circle>
+  <circle r="3" fill="#8A2BE2">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M100,280 L250,240 L400,140 L530,200"/>
+  </circle>
+
+  <!-- Input Layer Nodes -->
+  <g filter="url(#nodeFilter)">
+    <circle cx="100" cy="120" r="18" fill="url(#nodeGlow)">
+      <animate attributeName="r" values="18;20;18" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="100" cy="200" r="18" fill="url(#nodeGlow)">
+      <animate attributeName="r" values="18;20;18" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="100" cy="280" r="18" fill="url(#nodeGlow)">
+      <animate attributeName="r" values="18;20;18" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Hidden Layer 1 Nodes -->
+  <g filter="url(#nodeFilter)">
+    <circle cx="250" cy="100" r="16" fill="url(#nodeGlow)">
+      <animate attributeName="r" values="16;18;16" dur="2s" begin="0.1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="250" cy="170" r="16" fill="url(#nodeGlow)">
+      <animate attributeName="r" values="16;18;16" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="250" cy="240" r="16" fill="url(#nodeGlow)">
+      <animate attributeName="r" values="16;18;16" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="250" cy="310" r="16" fill="url(#nodeGlow)">
+      <animate attributeName="r" values="16;18;16" dur="2s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Hidden Layer 2 Nodes -->
+  <g filter="url(#nodeFilter)">
+    <circle cx="400" cy="140" r="16" fill="url(#nodeGlow)">
+      <animate attributeName="r" values="16;18;16" dur="2s" begin="0.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="400" cy="260" r="16" fill="url(#nodeGlow)">
+      <animate attributeName="r" values="16;18;16" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Output Node -->
+  <circle cx="530" cy="200" r="22" fill="#FF0080" filter="url(#nodeFilter)">
+    <animate attributeName="r" values="22;26;22" dur="1.5s" repeatCount="indefinite"/>
+    <animate attributeName="fill" values="#FF0080;#8A2BE2;#36BCF7;#FF0080" dur="4s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Labels -->
+  <text x="100" y="360" text-anchor="middle" font-family="Fira Code, monospace" font-size="12" fill="#36BCF7">Input</text>
+  <text x="250" y="360" text-anchor="middle" font-family="Fira Code, monospace" font-size="12" fill="#8A2BE2">Hidden 1</text>
+  <text x="400" y="360" text-anchor="middle" font-family="Fira Code, monospace" font-size="12" fill="#FF0080">Hidden 2</text>
+  <text x="530" y="360" text-anchor="middle" font-family="Fira Code, monospace" font-size="12" fill="#00C853">Output</text>
+</svg>

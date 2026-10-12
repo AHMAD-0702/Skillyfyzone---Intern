@@ -1,0 +1,65 @@
+# ═══════════════════════════════════════════════════════════════
+# 🐍 Snake Contribution Graph Generator
+# Author: AHMAD-0702
+# Generates an animated snake that eats your contribution grid
+# ═══════════════════════════════════════════════════════════════
+
+name: 🐍 Generate Snake Animation
+
+# ─── Trigger Conditions ───
+on:
+  # Runs every 12 hours automatically
+  schedule:
+    - cron: "0 */12 * * *"
+
+  # Allows you to manually trigger it from the Actions tab
+  workflow_dispatch:
+
+  # Runs on every push to main branch
+  push:
+    branches:
+      - main
+      - master
+
+# ─── Permissions ───
+permissions:
+  contents: write
+
+# ─── Jobs ───
+jobs:
+  generate-snake:
+    name: 🐍 Generate Snake SVG
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      # ─── Step 1: Checkout repo ───
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      # ─── Step 2: Generate Snake SVG ───
+      - name: 🐍 Generate Snake Animation
+        uses: Platane/snk@v3
+        id: snake-gif
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+            dist/github-contribution-grid-snake.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
+
+      # ─── Step 3: Show git status (debug) ───
+      - name: 🔍 Show Git Status
+        run: |
+          git status
+          ls -la dist/
+
+      # ─── Step 4: Push to output branch ───
+      - name: 🚀 Push Snake to Output Branch
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+          commit_message: "🐍 Update snake animation [skip ci]"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

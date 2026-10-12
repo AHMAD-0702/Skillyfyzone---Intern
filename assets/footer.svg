@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 180" width="1200" height="180">
+  <defs>
+    <!-- Animated Gradient Background -->
+    <linearGradient id="footerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF0080">
+        <animate attributeName="stop-color"
+          values="#FF0080;#8A2BE2;#36BCF7;#FF0080"
+          dur="8s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" stop-color="#8A2BE2">
+        <animate attributeName="stop-color"
+          values="#8A2BE2;#36BCF7;#FF0080;#8A2BE2"
+          dur="8s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#36BCF7">
+        <animate attributeName="stop-color"
+          values="#36BCF7;#FF0080;#8A2BE2;#36BCF7"
+          dur="8s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+
+    <!-- Wave Gradient -->
+    <linearGradient id="footerWaveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="footerGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Heart Glow -->
+    <filter id="heartGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark Base -->
+  <rect width="1200" height="180" fill="#0D1117"/>
+
+  <!-- Animated Top Wave (Smooth) -->
+  <path fill="url(#footerWaveGrad)" opacity="0.5">
+    <animate attributeName="d"
+      values="M0,40 Q200,0 400,40 T800,40 T1200,40 L1200,180 L0,180 Z;
+              M0,40 Q200,80 400,40 T800,40 T1200,40 L1200,180 L0,180 Z;
+              M0,40 Q200,0 400,40 T800,40 T1200,40 L1200,180 L0,180 Z"
+      dur="6s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Main Gradient Band -->
+  <rect x="0" y="60" width="1200" height="4" fill="url(#footerGrad)" opacity="0.9">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Second Gradient Band (Offset) -->
+  <rect x="0" y="72" width="1200" height="2" fill="url(#footerGrad)" opacity="0.5">
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Floating Particles -->
+  <g fill="#ffffff" opacity="0.5" filter="url(#footerGlow)">
+    <circle cx="80" cy="120" r="2">
+      <animate attributeName="cy" values="120;80;120" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="240" cy="140" r="3">
+      <animate attributeName="cy" values="140;90;140" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="420" cy="110" r="2">
+      <animate attributeName="cy" values="110;150;110" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="600" cy="130" r="3">
+      <animate attributeName="cy" values="130;70;130" dur="5.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="5.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="780" cy="100" r="2">
+      <animate attributeName="cy" values="100;150;100" dur="6.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="6.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="960" cy="140" r="3">
+      <animate attributeName="cy" values="140;100;140" dur="7.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="7.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1120" cy="120" r="2">
+      <animate attributeName="cy" values="120;80;120" dur="5.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="5.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Main Signature Text -->
+  <text x="600" y="115" text-anchor="middle"
+    font-family="'Fira Code', 'Courier New', monospace"
+    font-size="24" font-weight="bold" fill="#ffffff"
+    filter="url(#footerGlow)">
+    Thanks for visiting! 🚀
+    <animate attributeName="opacity" values="1;0.85;1" dur="3s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- Sub Text -->
+  <text x="600" y="145" text-anchor="middle"
+    font-family="'Fira Code', monospace"
+    font-size="13" fill="#36BCF7" opacity="0.9">
+    Made with
+  </text>
+
+  <!-- Animated Pulsing Heart -->
+  <g transform="translate(675, 132)" filter="url(#heartGlow)">
+    <path d="M0,0 C-3,-3 -8,-1 -8,3 C-8,7 -3,10 0,13 C3,10 8,7 8,3 C8,-1 3,-3 0,0 Z"
+      fill="#FF0080">
+      <animateTransform attributeName="transform" type="scale"
+        values="1;1.3;1" dur="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="fill"
+        values="#FF0080;#8A2BE2;#FF0080" dur="2.4s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <text x="600" y="145" text-anchor="middle"
+    font-family="'Fira Code', monospace"
+    font-size="13" fill="#36BCF7" opacity="0.9">
+    Made with     by AHMAD-0702
+  </text>
+
+  <!-- Copyright Text -->
+  <text x="600" y="168" text-anchor="middle"
+    font-family="'Fira Code', monospace"
+    font-size="11" fill="#ffffff" opacity="0.5">
+    © 2024 - Skillyfyzone Internship · All Rights Reserved
+  </text>
+
+  <!-- Bottom Gradient Line -->
+  <rect x="0" y="176" width="1200" height="4" fill="url(#footerGrad)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Left Decorative Corner -->
+  <g transform="translate(20, 20)" opacity="0.3">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#36BCF7" stroke-width="2"/>
+    <line x1="0" y1="0" x2="0" y2="30" stroke="#36BCF7" stroke-width="2"/>
+    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="4s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- Right Decorative Corner -->
+  <g transform="translate(1180, 20) rotate(90)" opacity="0.3">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#FF0080" stroke-width="2"/>
+    <line x1="0" y1="0" x2="0" y2="30" stroke="#FF0080" stroke-width="2"/>
+    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="4s" begin="2s" repeatCount="indefinite"/>
+  </g>
+</svg>

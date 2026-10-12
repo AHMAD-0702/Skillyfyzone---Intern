@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 60" width="1200" height="60">
+  <defs>
+    <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#36BCF7"/>
+      <stop offset="33%" stop-color="#8A2BE2"/>
+      <stop offset="66%" stop-color="#FF0080"/>
+      <stop offset="100%" stop-color="#36BCF7"/>
+      <animate attributeName="x1" values="0%;100%;0%" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="100%;0%;100%" dur="10s" repeatCount="indefinite"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="60" fill="#0D1117"/>
+
+  <!-- Animated Sine Wave 1 -->
+  <path fill="none" stroke="url(#waveGrad1)" stroke-width="3" opacity="0.9">
+    <animate attributeName="d"
+      values="M0,30 Q150,0 300,30 T600,30 T900,30 T1200,30;
+              M0,30 Q150,60 300,30 T600,30 T900,30 T1200,30;
+              M0,30 Q150,0 300,30 T600,30 T900,30 T1200,30"
+      dur="4s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Animated Sine Wave 2 (offset) -->
+  <path fill="none" stroke="url(#waveGrad1)" stroke-width="2" opacity="0.5">
+    <animate attributeName="d"
+      values="M0,30 Q150,60 300,30 T600,30 T900,30 T1200,30;
+              M0,30 Q150,0 300,30 T600,30 T900,30 T1200,30;
+              M0,30 Q150,60 300,30 T600,30 T900,30 T1200,30"
+      dur="4s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Moving Dot -->
+  <circle r="5" fill="#FF0080">
+    <animateMotion dur="6s" repeatCount="indefinite"
+      path="M0,30 Q150,0 300,30 T600,30 T900,30 T1200,30"/>
+    <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+</svg>
